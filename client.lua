@@ -126,9 +126,9 @@ local function CreateBlipsZones()
         if garage.showBlip then
             CreateBlips(garage)
         end
-        if garage.type == 'job' and (PlayerJob.name == garage.job or PlayerJob.type == garage.jobType) then
+        if garage.type == 'job' and (PlayerJob?.name == garage.job or PlayerJob?.type == garage.jobType) then
             zone = CreateZone(index, garage, 'job')
-        elseif garage.type == 'gang' and PlayerGang.name == garage.job then
+        elseif garage.type == 'gang' and PlayerGang?.name == garage.job then
             zone = CreateZone(index, garage, 'gang')
         elseif garage.type == 'depot' then
             zone = CreateZone(index, garage, 'depot')
@@ -457,6 +457,7 @@ end)
 
 AddEventHandler('onResourceStart', function(res)
     if res ~= GetCurrentResourceName() then return end
+
     CreateBlipsZones()
 end)
 
