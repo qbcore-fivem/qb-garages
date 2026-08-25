@@ -122,7 +122,7 @@ end
 -- Backwards Compat
 
 -- Spawns a vehicle and returns its network ID and properties.
-QBCore.Functions.CreateCallback('qb-garages:server:spawnvehicle', function(source, cb, plate, vehicle, coords)
+QBCore.Functions.CreateCallback('qb-garages:server:spawnvehicle', function(source, cb, plate, _, coords)
     local Player = exports['qb-core']:GetPlayer(source)
     if not Player then
         cb(nil, nil, nil)
