@@ -295,6 +295,10 @@ RegisterNetEvent('qb-garages:client:takeOutGarage', function(data)
             local location = GetSpawnPoint(data.garage)
             if not location then return end
             QBCore.Functions.TriggerCallback('qb-garages:server:spawnvehicle', function(netId, properties, vehPlate)
+                if not netId then
+                    QBCore.Functions.Notify(Lang:t('error.no_vehicles'), 'error', 5000)
+                    return
+                end
                 while not NetworkDoesNetworkIdExist(netId) do Wait(10) end
                 local veh = NetworkGetEntityFromNetworkId(netId)
                 Citizen.Await(CheckPlate(veh, vehPlate))
